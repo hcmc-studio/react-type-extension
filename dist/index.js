@@ -29,12 +29,12 @@ export function useUndefinedPair(defaultValue = undefined) {
         }
     };
 }
-export function useErrorPairs() {
+export function useErrorPairs(config) {
     const states = {
-        title: useStatePair(''),
-        body: useStatePair({}),
-        closeable: useBooleanPair(true),
-        visible: useBooleanPair(false),
+        title: useStatePair(config?.title ?? ''),
+        body: useStatePair(config?.body ?? {}),
+        closeable: useBooleanPair(config?.closeable ?? true),
+        visible: useBooleanPair(config?.visible ?? false),
         show(title, body, closeable = true) {
             states.title.setter(title);
             states.body.setter(body);

@@ -21,4 +21,10 @@ export type ErrorStatePairs = {
 export declare function useStatePair<T>(defaultValue: T): StatePair<T>;
 export declare function useBooleanPair(defaultValue?: boolean): BooleanStatePair;
 export declare function useUndefinedPair<T>(defaultValue?: T | undefined): UndefinedStatePair<T>;
-export declare function useErrorPairs(): ErrorStatePairs;
+export type ErrorPairsConfig = {
+    title?: string;
+    body?: any;
+    closeable?: boolean;
+    visible?: boolean;
+};
+export declare function useErrorPairs(config?: ErrorPairsConfig): ErrorStatePairs;

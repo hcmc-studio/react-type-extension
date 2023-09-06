@@ -59,12 +59,19 @@ export function useUndefinedPair<T>(defaultValue: T | undefined = undefined): Un
     }
 }
 
-export function useErrorPairs(): ErrorStatePairs {
+export type ErrorPairsConfig = {
+    title?: string
+    body?: any
+    closeable?: boolean
+    visible?: boolean
+}
+
+export function useErrorPairs(config?: ErrorPairsConfig): ErrorStatePairs {
     const states: ErrorStatePairs = {
-        title: useStatePair(''),
-        body: useStatePair({}),
-        closeable: useBooleanPair(true),
-        visible: useBooleanPair(false),
+        title: useStatePair(config?.title ?? ''),
+        body: useStatePair(config?.body ?? {}),
+        closeable: useBooleanPair(config?.closeable ?? true),
+        visible: useBooleanPair(config?.visible ?? false),
         show(title: string, body: any, closeable: boolean = true) {
             states.title.setter(title)
             states.body.setter(body)
