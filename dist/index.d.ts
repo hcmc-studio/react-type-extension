@@ -40,14 +40,14 @@ export type ListOptionFilterSelectorProps<Filter extends ListOptionFilter, Props
     statePairs: ListOptionFilterStatePairs<Filter>;
     onDoneClick?: () => void;
 };
-export type ListOptionFilterExtension<Filter extends ListOptionFilter, IndicatorProps, SelectorProps> = {
+export interface ListOptionFilterExtension<Filter extends ListOptionFilter, IndicatorProps, SelectorProps> {
     names: Record<keyof Filter, string>;
     useStatePairs(initial?: Partial<Filter>): ListOptionFilterStatePairs<Filter>;
     indicators(props: ListOptionFilterIndicatorProps<Filter, IndicatorProps>): JSX.Element;
     selectors(props: ListOptionFilterSelectorProps<Filter, SelectorProps>): JSX.Element;
-};
+}
 export type ListOptionOrderStatePairs<Order extends ListOptionOrder> = Record<keyof Order, UndefinedStatePair<SortOrder>>;
-export type ListOptionOrderExtension<Order extends ListOptionOrder> = {
+export interface ListOptionOrderExtension<Order extends ListOptionOrder> {
     names: Record<keyof Order, string>;
     useStatePairs(initial?: Partial<Order>): ListOptionOrderStatePairs<Order>;
-};
+}
