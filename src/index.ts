@@ -98,7 +98,7 @@ export type ListOptionFilterSelectorProps<Filter extends ListOptionFilter, Props
     onDoneClick?: () => void
 }
 
-export interface ListOptionFilterExtension<Filter extends ListOptionFilter, IndicatorProps, SelectorProps> {
+export type ListOptionFilterExtension<Filter extends ListOptionFilter, IndicatorProps, SelectorProps> = {
     names: Record<keyof Filter, string>
     useStatePairs(initial?: Partial<Filter>): ListOptionFilterStatePairs<Filter>
     indicators(props: ListOptionFilterIndicatorProps<Filter, IndicatorProps>): JSX.Element
@@ -107,7 +107,7 @@ export interface ListOptionFilterExtension<Filter extends ListOptionFilter, Indi
 
 export type ListOptionOrderStatePairs<Order extends ListOptionOrder> = Record<keyof Order, UndefinedStatePair<SortOrder>>
 
-export interface ListOptionOrderExtension<Order extends ListOptionOrder> {
+export type ListOptionOrderExtension<Order extends ListOptionOrder> = {
     names: Record<keyof Order, string>
     useStatePairs(initial?: Partial<Order>): ListOptionOrderStatePairs<Order>
 }
